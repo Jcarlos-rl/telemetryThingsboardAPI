@@ -39,11 +39,11 @@
                         </div>
                         <div class="mb-5 col-span-3">
                             <label for="entityId" class="block mb-2 text-sm font-medium text-gray-900">entityID</label>
-                            <input type="text" id="entityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="d7b38160-653d-11ee-bf9d-d3722ee04691"/>
+                            <input type="text" id="entityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
                         </div>
                         <div class="mb-5 col-span-6" id="content_keys">
                             <label for="keys" class="block mb-2 text-sm font-medium text-gray-900">Claves de la telemetría</label>
-                            <input type="text" id="keys" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="S1_TH_001_humidity,S1_TH_001_temperature"/>
+                            <input type="text" id="keys" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
                         </div>
                         <div class="mb-5 col-span-6 hidden" id="content_archivo">
                             <label for="keys" class="block mb-2 text-sm font-medium text-gray-900">Archivo .json de mediciones</label>
@@ -51,11 +51,11 @@
                         </div>
                         <div class="mb-5 col-span-6" id="content_startDay">
                             <label for="startDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de inicio</label>
-                            <input type="datetime-local" id="startDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-19T00:00"/>
+                            <input type="datetime-local" id="startDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
                         </div>
                         <div class="mb-5 col-span-6" id="content_endDay">
                             <label for="endDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de fin</label>
-                            <input type="datetime-local" id="endDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-29T23:59"/>
+                            <input type="datetime-local" id="endDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
                         </div>
                         <div class="mb-5 col-span-12 flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 hidden" role="alert" id="alert_get_telemetria">
                             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -108,16 +108,16 @@
                                 <option value="TB03">TB03</option>
                                 <option value="TB04">TB04</option>
                                 <option value="TB06">TB06</option>
-                                <option value="local">local</option>
+                                <!-- <option value="local">local</option> -->
                             </select>
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@email.com" required value="juan.romero@tesamerica.com.mx"/>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@email.com" required/>
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
-                            <input type="password" name="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="Carlos-181213"/>
+                            <input type="password" name="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required/>
                         </div>
                         <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 hidden" role="alert" id="alert_login">
                             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
