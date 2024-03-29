@@ -9,45 +9,72 @@
 <body>
     <section class="container mx-auto px-6 md:px-0">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-center text-2xl my-10">Telemetrias de dispositivos</h1>
-            <div class="grid grid-cols-12 gap-2">
-                <div class="mb-5 col-span-6">
-                    <label for="urlServer" class="block mb-2 text-sm font-medium text-gray-900">URL del servidor</label>
-                    <input type="text" id="urlServer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="https://tb02.tkmecloud.io"/>
-                </div>
-                <div class="mb-5 col-span-6">
-                    <label for="token" class="block mb-2 text-sm font-medium text-gray-900">Token</label>
-                    <input type="text" id="token" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdWFuLnJvbWVyb0B0ZXNhbWVyaWNhLmNvbS5teCIsInVzZXJJZCI6IjFmMDZlMzUwLWQwNDUtMTFlZS1iZDFhLTBmY2FhNGY1MDY5NiIsInNjb3BlcyI6WyJURU5BTlRfQURNSU4iXSwic2Vzc2lvbklkIjoiYmUxNThmMzktZjJlOS00MDIyLWIwMTQtYjViZTEyNzg0OWNhIiwiaXNzIjoidGhpbmdzYm9hcmQuaW8iLCJpYXQiOjE3MDk4NDk1MDAsImV4cCI6MTcwOTg1ODUwMCwiZmlyc3ROYW1lIjoiSnVhbiBDYXJsb3MiLCJsYXN0TmFtZSI6IlJvbWVybyIsImVuYWJsZWQiOnRydWUsImlzUHVibGljIjpmYWxzZSwidGVuYW50SWQiOiJkZWE0MTE2MC05ZTUwLTExZWQtYTE5OS0xOTg4MDcxZWE1NjciLCJjdXN0b21lcklkIjoiMTM4MTQwMDAtMWRkMi0xMWIyLTgwODAtODA4MDgwODA4MDgwIn0.6f9Ddx2zS7uDQKiAUdk4_FftODBWA9qcmiIJSo_Lqw0oIipCf-mUVaPCrAhZtcAfB84QRlYIqyGCelgHM8t2GQ"/>
-                </div>
-                <div class="mb-5 col-span-3">
-                    <label for="entityType" class="block mb-2 text-sm font-medium text-gray-900">entityType</label>
-                    <select id="entityType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="ASSET">Activo</option>
-                        <option value="DEVICE">Dispositivo</option>
-                    </select>
-                </div>
-                <div class="mb-5 col-span-3">
-                    <label for="entityId" class="block mb-2 text-sm font-medium text-gray-900">entityID</label>
-                    <input type="text" id="entityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
-                </div>
-                <div class="mb-5 col-span-6">
-                    <label for="keys" class="block mb-2 text-sm font-medium text-gray-900">Claves de la telemetría</label>
-                    <input type="text" id="keys" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="S1_TH_001_temperature,S1_TH_001_humidity"/>
-                </div>
-                <div class="mb-5 col-span-6">
-                    <label for="startDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de inicio</label>
-                    <input type="datetime-local" id="startDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-01T00:00"/>
-                </div>
-                <div class="mb-5 col-span-6">
-                    <label for="endDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de fin</label>
-                    <input type="datetime-local" id="endDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-29T23:59"/>
-                </div>
+            <div class="mb-4 border-b border-gray-200">
+                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" role="tablist">
+                    <li class="me-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg text-blue-600 hover:text-blue-600 border-blue-600" id="exportar_tab" type="button" role="tab">Exportar información</button>
+                    </li>
+                    <li class="me-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300" id="importar_tab" type="button" role="tab">Importar información</button>
+                    </li>
+                </ul>
             </div>
-            <div class="flex justify-between">
-                <button id="btn_request" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Realizar petición</button>
-                <a id="btn_download" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Descargar archivo</a>
-            </div>
-            <div id="content_feedback" class=" my-6">
+            <div>
+                <div class="p-4" role="tabpanel">
+                    <h1 class="text-center text-2xl mb-10">Telemetrias de dispositivos</h1>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="mb-5 col-span-9">
+                            <label for="urlServer" class="block mb-2 text-sm font-medium text-gray-900">URL del servidor</label>
+                            <input type="text" id="urlServer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled/>
+                        </div>
+                        <div class="mb-5 col-span-3 flex justify-center items-center">
+                            <button id="change_server" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Cambiar de servidor</button>
+                        </div>
+                        <div class="mb-5 col-span-3">
+                            <label for="entityType" class="block mb-2 text-sm font-medium text-gray-900">entityType</label>
+                            <select id="entityType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="DEVICE">Dispositivo</option>
+                                <option value="ASSET">Activo</option>
+                            </select>
+                        </div>
+                        <div class="mb-5 col-span-3">
+                            <label for="entityId" class="block mb-2 text-sm font-medium text-gray-900">entityID</label>
+                            <input type="text" id="entityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="d7b38160-653d-11ee-bf9d-d3722ee04691"/>
+                        </div>
+                        <div class="mb-5 col-span-6" id="content_keys">
+                            <label for="keys" class="block mb-2 text-sm font-medium text-gray-900">Claves de la telemetría</label>
+                            <input type="text" id="keys" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="S1_TH_001_humidity,S1_TH_001_temperature"/>
+                        </div>
+                        <div class="mb-5 col-span-6 hidden" id="content_archivo">
+                            <label for="keys" class="block mb-2 text-sm font-medium text-gray-900">Archivo .json de mediciones</label>
+                            <input type="file" name="archivo" id="archivo" accept=".json">
+                        </div>
+                        <div class="mb-5 col-span-6" id="content_startDay">
+                            <label for="startDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de inicio</label>
+                            <input type="datetime-local" id="startDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-19T00:00"/>
+                        </div>
+                        <div class="mb-5 col-span-6" id="content_endDay">
+                            <label for="endDay" class="block mb-2 text-sm font-medium text-gray-900">Fecha de fin</label>
+                            <input type="datetime-local" id="endDay" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="2024-02-29T23:59"/>
+                        </div>
+                        <div class="mb-5 col-span-12 flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 hidden" role="alert" id="alert_get_telemetria">
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between" id="content_buttons_e">
+                        <button id="btn_save" type="button" class="hidden focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Guardar información</button>
+                        <button id="btn_request" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Realizar petición</button>
+                        <a id="btn_download" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 cursor-pointer pointer-events-none">Descargar archivo</a>
+                    </div>
+                    <div id="content_feedback" class="my-6">
+                    </div>  
+                </div>
             </div>
         </div>
     </section>
@@ -56,6 +83,152 @@
             <p class="text-white">Cargando...</p>
         </div>
     </div>
-    <script src="index.js"></script>
+
+    <div id="login_modal" tabindex="-1" aria-hidden="true" class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-10 justify-center items-center w-full md:inset-0 max-h-full bg-gray-900/50 hidden">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Iniciar sesión
+                    </h3>
+                    <!-- <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button> -->
+                </div>
+                <div class="p-4 md:p-5">
+                    <form class="space-y-4" id="login">
+                        <div class="mb-5 col-span-3">
+                            <label for="servidor" class="block mb-2 text-sm font-medium text-gray-900">Servidor</label>
+                            <select name="servidor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="VW01">VW01</option>
+                                <option value="TB02">TB02</option>
+                                <option value="TB03">TB03</option>
+                                <option value="TB04">TB04</option>
+                                <option value="TB06">TB06</option>
+                                <option value="local">local</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@email.com" required value="juan.romero@tesamerica.com.mx"/>
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+                            <input type="password" name="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="Carlos-181213"/>
+                        </div>
+                        <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 hidden" role="alert" id="alert_login">
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <p>Texto</p>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const backdrop = document.querySelector('#backdrop'),
+            login_modal = document.querySelector('#login_modal'),
+            urlServer = document.querySelector('#urlServer'),
+            exportar_tab = document.querySelector('#exportar_tab'),
+            importar_tab = document.querySelector('#importar_tab'),
+            content_keys = document.querySelector('#content_keys'),
+            content_archivo = document.querySelector('#content_archivo'),
+            content_startDay = document.querySelector('#content_startDay'),
+            content_endDay = document.querySelector('#content_endDay'),
+            btn_save = document.querySelector('#btn_save'),
+            btn_request = document.querySelector('#btn_request'),
+            btn_download = document.querySelector('#btn_download'),
+            change_server = document.querySelector('#change_server'),
+            content_feedback = document.querySelector('#content_feedback'),
+            serversList = {
+                'VW01' : 'https://vw01.tkmecloud.io/',
+                'TB02' : 'https://tb02.tkmecloud.io/',
+                'TB03' : 'http://tb03.tkmecloud.io/',
+                'TB04' : 'https://tb04.tkmecloud.io/',
+                'TB06' : 'https://tb06.tkmecloud.io/',
+                'local' : 'http://192.168.3.102:8080/'
+            };
+    
+        let servidorKey = (localStorage.getItem('servidor_apithingsboard') !== null) ? localStorage.getItem('servidor_apithingsboard') : '',
+            token = (localStorage.getItem('token_apithingsboard') !== null) ? localStorage.getItem('token_apithingsboard') : '';
+
+        if(token === ''){
+            login_modal.classList.remove('hidden');
+        }
+
+        if(servidorKey !== ''){
+            urlServer.value = serversList[servidorKey];
+        }
+
+        const showBackdrop = (view, message = "") =>{
+            document.querySelector('#backdrop p').innerText = message;
+            if(view){
+                backdrop.classList.remove('hidden');
+            }else{
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        exportar_tab.addEventListener('click', ()=>{
+            changeTab('e');
+        })
+
+        importar_tab.addEventListener('click', ()=>{
+            changeTab('i');
+        })
+
+        const changeTab = (type)=>{
+            content_feedback.innerHTML = '';
+            if(type === 'i'){
+                content_keys.classList.add('hidden');
+                content_startDay.classList.add('hidden');
+                content_endDay.classList.add('hidden');
+                btn_request.classList.add('hidden');
+                btn_download.classList.add('hidden');
+                btn_save.classList.remove('hidden');
+                content_archivo.classList.remove('hidden');
+                importar_tab.setAttribute('class', 'inline-block p-4 border-b-2 rounded-t-lg text-blue-600 hover:text-blue-600 border-blue-600');
+                exportar_tab.setAttribute('class', 'inline-block p-4 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300');
+            }else{
+                content_keys.classList.remove('hidden');
+                content_startDay.classList.remove('hidden');
+                content_endDay.classList.remove('hidden');
+                btn_request.classList.remove('hidden');
+                btn_download.classList.remove('hidden');
+                btn_save.classList.add('hidden');
+                content_archivo.classList.add('hidden');
+                exportar_tab.setAttribute('class', 'inline-block p-4 border-b-2 rounded-t-lg text-blue-600 hover:text-blue-600 border-blue-600');
+                importar_tab.setAttribute('class', 'inline-block p-4 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300');
+            }
+        }
+
+        change_server.addEventListener('click', ()=>{
+            closeSesion();
+        });
+
+        const closeSesion = ()=>{
+            let servidor = document.querySelector('select[name="servidor"]');
+            servidor.value = servidorKey;
+            login_modal.classList.remove('hidden');
+            alert_get_telemetria.classList.add('hidden');
+            token = '';
+            servidorKey = '';
+            urlServer.value = '';
+            localStorage.removeItem('token_apithingsboard');
+            localStorage.removeItem('servidor_apithingsboard');
+        }
+    </script>
+    <script src="login.js"></script>
+    <script src="getTelemetry.js"></script>
+    <script src="postTelemetry.js"></script>
 </body>
 </html>

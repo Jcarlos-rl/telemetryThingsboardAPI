@@ -18,6 +18,8 @@ btn_request.addEventListener('click', ()=>{
     endDayMil = (endDayMil === 0) ? convertDateToMilliseconds(new Date(endDay.value)) : endDayMil;
     let url = `${ urlServer.value }/api/plugins/telemetry/${ entityType.value }/${ entityId.value }/values/timeseries?keys=${ keys.value }&startTs=${ startDayMil }&endTs=${ endDayMil }&limit=1000`;
     fetchData(token.value, url).then(data=>{
+        console.log(data);
+        return;
         backdrop.classList.add('hidden');
         if(Object.keys(data).length === 0){
             let startDayMilLocale = new Date(endDayMil), 
@@ -52,6 +54,9 @@ btn_request.addEventListener('click', ()=>{
                 prevContent = content_feedback.innerHTML;
             content_feedback.innerHTML = `<p class="mb-4">Se obtubieron ${ Object.keys(newData).length - countNewData.length } registros en un rango de fechas de ${ endDayMilLocale.toLocaleString() } al ${ prevEndDayMilLocale.toLocaleString() }. Llevando un total de ${ Object.keys(newData).length } registros.</p>`;
             content_feedback.innerHTML += prevContent;
+            setTimeout(() => {
+                btn_request.click();
+            }, 2000);
         }
     });
 });
@@ -95,3 +100,28 @@ const generateJSONFile = ()=>{
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "data.json");
 }
+
+const getToken = ()=>{
+    let formData = new FormData();
+
+    formData.append("username", "juan.romero@tesamerica.com.mx");
+    formData.append("password", "Carlos-181213");
+
+    fetch("https://tb04.tkmecloud.io/api/auth/login",{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: 'juan.romero@tesamerica.com.mx',
+            password: 'Carlos-181213'
+        })
+    })
+    .then(res => res.json())
+    .then(data=>{
+        console.log(data);
+    })
+}
+
+//getToken();
