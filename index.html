@@ -149,6 +149,7 @@
             btn_download = document.querySelector('#btn_download'),
             change_server = document.querySelector('#change_server'),
             content_feedback = document.querySelector('#content_feedback'),
+            alert_get_telemetria = document.querySelector('#alert_get_telemetria'),
             serversList = {
                 'VW01' : 'https://vw01.tkmecloud.io/',
                 'TB02' : 'https://tb02.tkmecloud.io/',
@@ -188,6 +189,7 @@
 
         const changeTab = (type)=>{
             content_feedback.innerHTML = '';
+            alert_get_telemetria.classList.add('hidden');
             if(type === 'i'){
                 content_keys.classList.add('hidden');
                 content_startDay.classList.add('hidden');

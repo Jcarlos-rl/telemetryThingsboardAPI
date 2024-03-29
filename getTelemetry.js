@@ -3,7 +3,6 @@ const entityType = document.querySelector('#entityType'),
     keys = document.querySelector('#keys'),
     startDay = document.querySelector('#startDay'),
     endDay = document.querySelector('#endDay'),
-    alert_get_telemetria = document.querySelector('#alert_get_telemetria'),
     alert_get_telemetria_p = document.querySelector('#alert_get_telemetria p')
     ;
 
